@@ -1,2 +1,3 @@
-# EVM-Anamoly-Detection
-Microsoft Code Fun Do++ Project for 2019
+# EVM Anamoly Detection
+
+EVMs are prone to 
