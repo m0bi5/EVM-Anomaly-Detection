@@ -2,6 +2,7 @@ from __future__ import division
 import cv2
 import time
 import numpy as np
+import imutils
 
 protoFile = "hand.prototxt"
 weightsFile = "hand.caffemodel"
@@ -48,6 +49,7 @@ for i in range(nPoints):
     else :
         points.append(None)
 
+"""
 # Draw Skeleton
 for pair in POSE_PAIRS:
     partA = pair[0]
@@ -59,6 +61,7 @@ for pair in POSE_PAIRS:
         cv2.circle(frame, points[partB], 8, (0, 0, 255), thickness=-1, lineType=cv2.FILLED)
 
 
+
 cv2.imshow('Output-Keypoints', frameCopy)
 cv2.imshow('Output-Skeleton', frame)
 
@@ -68,4 +71,25 @@ cv2.imwrite('Output-Skeleton.jpg', frame)
 
 print("Total time taken : {:.3f}".format(time.time() - t))
 
+
+cv2.waitKey(0)
+"""
+
+
+im = cv2.imread("shapes.png")
+indexX = points[8][0]
+indexY = points[8][1]
+
+print(indexX)
+print(indexY)
+
+
+
+imgray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
+ret,thresh = cv2.threshold(imgray,127,255,0)
+img, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+
+img = cv2.drawContours(img, contours, -1, (0,255,0), 3)
+
+cv2.imshow("Contours", img)
 cv2.waitKey(0)
