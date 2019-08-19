@@ -1,7 +1,7 @@
 import math,time
 import cv2 as cv 
 import numpy as np
-class fingerDetector():
+class FingerDetector():
 	skinColourLowerBound = np.array([0,50,70], np.uint8)
 	skinColourUpperBound = np.array([100,230,230], np.uint8)
 	kernel = np.ones((5,5), np.uint8)

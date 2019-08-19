@@ -54,7 +54,7 @@ ROOT_URLCONF = 'evm_mismatch.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['template/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,7 +1,7 @@
 import math,time
 import cv2 as cv 
 import numpy as np
-class buttonDetector():
+class ButtonDetector():
     boxToParty={
         0:"Party A",
         1:"Party B",
