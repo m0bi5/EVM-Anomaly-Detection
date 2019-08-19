@@ -58,7 +58,7 @@ class talkToAzure():
 #deploymentObject=talkToAzure()
 #deploymentObject.deploymentInit('voteContract.sol')
 #deploymentObject.deployContract()
-
+'''
 transactionObject=talkToAzure()
 transactionObject.transactionInit()
 print(transactionObject.contract.functions.get_candidates(0).call())
@@ -66,3 +66,4 @@ print(transactionObject.makeTransaction(transactionObject.contract.functions.cas
 print(transactionObject.contract.functions.get_candidates(0).call())
 
 
+'''
