@@ -25,14 +25,14 @@ def run():
         buttons=buttonDetectorObject.getBoundingBoxes(image)
         for button in buttons:
             cv.drawContours( image, [button], -1, ( 255, 0, 0 ), 2 )
-        cv.imshow('Button Detection',image)
+        #cv.imshow('Button Detection',image)
         if cv.waitKey(1) & 0xFF == ord('q'):
             break
         calibrationFrames+=1
         if calibrationFrames==100:
             break
     print('Vote buttons detected')
-    cv.destroyAllWindows()
+    #cv.destroyAllWindows()
     choiceCount={"choice":-1,"frameCount":0}
 
     #Start finger tracking cycle
@@ -63,8 +63,10 @@ def run():
     cv.destroyAllWindows()
     camera.release()
     return transactionReceipt
+
 '''
 URL = 'http://localhost:8000'
 dataToSend={'transactionHash':transactionReceipt['transactionHash'].hex(),'blockNumber':transactionReceipt['blockNumber']}
 print(dataToSend)
-requests.post(URL,data=dataToSend,headers=dict(Referer=URL))'''
+requests.post(URL,data=dataToSend,headers=dict(Referer=URL))
+'''

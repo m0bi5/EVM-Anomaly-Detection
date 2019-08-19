@@ -1,28 +1,18 @@
 from kivy.app import App
-from kivy.lang import Builder
+from kivy.uix.widget import Widget
 from kivy.properties import StringProperty
-from kivy.uix.image import Image
-from kivy.uix.label import Label
-import time
+import random
 
-change=False
-class Display(App):
-    transactionHash=None
-    label=None
-    def setTransactionHash(self,transactionHash):
-        self.transactionHash=transactionHash
+class Display(Widget):
+    text = StringProperty()
+
+    def change_text(self):
+        self.text = str(random.randint(1, 100))
+
+class MainApp(App):
     def build(self):
-        self.text="""
-                                     [size=50]Vote Casted![/size]
-        \n\n\n\n\n\n\n\n\n\n\n\n
-                                              [size=24]Transaction Hash[/size]
-                                              ------------------------------------------------
-        \n
-        """
-        self.label=Label(text=text+self.transactionHash,markup=True)
-        return self.label
+        return Display()
 
-
-obj=Display()
-obj.setTransactionHash("0x80f34fa5e8c9047d8abf07b32fad091b9f2633b86400318aea04251b53def589")
-obj.run()
+if __name__ == '__main__':
+    obj=MainApp()
+    obj.run()

@@ -1,0 +1,10 @@
+<Display>:
+    BoxLayout:
+        size: root.size
+        Button:
+            id: button1
+            text: "Change text"
+            on_release: root.change_text()
+        Label:
+            id: label1
+            text: root.text
