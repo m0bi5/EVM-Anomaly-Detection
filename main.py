@@ -61,7 +61,6 @@ while camera.isOpened():
         break
 cv.destroyAllWindows()
 camera.release()
-#transactionReceipt.blockNumber,.transactionHash
 
 URL = 'http://localhost:8000'
 dataToSend={'transactionHash':transactionReceipt['transactionHash'].hex(),'blockNumber':transactionReceipt['blockNumber']}
