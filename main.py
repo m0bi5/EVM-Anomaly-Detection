@@ -32,8 +32,8 @@ while camera.isOpened():
     if cv.waitKey(1) & 0xFF == ord('q'):
         break
     calibrationFrames+=1
-    if calibrationFrames==100:
-        break
+    #if calibrationFrames==100:
+        #break
 print('Vote buttons detected')
 cv.destroyAllWindows()
 choiceCount={"choice":-1,"frameCount":0}
@@ -59,6 +59,7 @@ while camera.isOpened():
             choiceCount['frameCount']+=1
             if choiceCount['frameCount']==20:
                 print('Voted for ',choiceCount['choice'], ' according to image')
+                #In real, will be fed by EVM
                 print('Voted for ',imageToButton[choiceCount['choice']], ' according to button')
                 if choiceCount['choice']!=imageToButton[choiceCount['choice']]:
                     print("EVM HACKED!!!")
@@ -66,7 +67,6 @@ while camera.isOpened():
                 #Send transaction to Azure Blockchain
                 transactionReceipt=transactionObject.makeTransaction(transactionObject.contract.functions.cast_vote(choiceCount['choice']))
                 break
-
         cv.drawContours( image, [buttons[i]], -1, ( 255, 0, 0 ), 2 )
     cv.imshow('out',image)
     if (cv.waitKey(1) & 0xFF == ord('q')) or voted:
@@ -74,8 +74,3 @@ while camera.isOpened():
 cv.destroyAllWindows()
 camera.release()
 print(transactionReceipt)
-'''
-URL = 'http://localhost:8000'
-dataToSend={'transactionHash':transactionReceipt['transactionHash'].hex(),'blockNumber':transactionReceipt['blockNumber']}
-print(dataToSend)
-requests.post(URL,data=dataToSend,headers=dict(Referer=URL))'''
