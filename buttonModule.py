@@ -23,9 +23,9 @@ class ButtonDetector():
         closed = cv.morphologyEx( edges,cv.MORPH_CLOSE,kernel)
         _,contours,_ = cv.findContours( closed, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE )
         for contour in contours:
-            if cv.contourArea(contour) > 50 :
+            if cv.contourArea(contour) > 5000 :
                 polygonArc = cv.arcLength(contour,True)
                 polygonFound = cv.approxPolyDP(contour, 0.1 * polygonArc,True)
-                #if (len(polygonFound)==4):
-                boxes.append(polygonFound)
+                if (len(polygonFound)==4):
+                    boxes.append(polygonFound)
         return boxes

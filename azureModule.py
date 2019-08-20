@@ -3,7 +3,7 @@ from web3.middleware import geth_poa_middleware
 import os,json,solc
 
 class TalkToAzure():
-    azure_url="https://thekoolkids.blockchain.azure.com:3200/xcLrJvLcHS-kfj7Zm5ODJuaE"
+    azure_url="https://thekoolkids.blockchain.azure.com:3200/NczEnEO-iwx9MXcXker1oUBT"
     connection=Web3(Web3.HTTPProvider(azure_url))
     connection.middleware_onion.inject(geth_poa_middleware, layer=0)
     compiledContract=None

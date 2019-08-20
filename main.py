@@ -7,9 +7,9 @@ from azureModule import TalkToAzure
 from shapely.geometry import Point
 from shapely.geometry.polygon import Polygon
 imageToButton={
-    0:2,
-    1:0,
-    2:1
+    0:0,
+    1:1,
+    2:2
 }
 buttons=[]
 buttonDetectorObject=ButtonDetector()
@@ -32,8 +32,8 @@ while camera.isOpened():
     if cv.waitKey(1) & 0xFF == ord('q'):
         break
     calibrationFrames+=1
-    #if calibrationFrames==100:
-        #break
+    if calibrationFrames==100:
+        break
 print('Vote buttons detected')
 cv.destroyAllWindows()
 choiceCount={"choice":-1,"frameCount":0}
