@@ -1,9 +1,9 @@
 import math,time
-import cv2 as cv 
+import cv2 as cv
 import numpy as np
 class FingerDetector():
-	skinColourLowerBound = np.array([0,50,70], np.uint8)
-	skinColourUpperBound = np.array([100,230,230], np.uint8)
+	skinColourLowerBound = np.array([0,48,80], np.uint8)
+	skinColourUpperBound = np.array([20,255,255], np.uint8)
 	kernel = np.ones((5,5), np.uint8)
 
 	# Function to detect color of the skin and remove background
@@ -16,6 +16,7 @@ class FingerDetector():
 
 	#Function to return end point of detected finger
 	def detectFinger(self,image):
+		
 		noise = self.removeNoise(image)
 		_,threshold=cv.threshold(noise, 100, 255, cv.THRESH_BINARY)
 		_,contours,_=cv.findContours(threshold, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
@@ -26,5 +27,5 @@ class FingerDetector():
 		defects=cv.convexityDefects(handPolygon, handHull)
 		if defects is not None:
 			for i in range(defects.shape[0]):
-				fingertip = tuple(contour[contour[:,:,1].argmax()][0])
+				fingertip = tuple(contour[contour[:,:,1].argmin()][0])
 				return fingertip

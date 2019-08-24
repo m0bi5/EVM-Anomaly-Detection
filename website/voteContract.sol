@@ -6,10 +6,10 @@ contract StoreVar {
         uint8 vote_count;
     }
 
-    candidate_vote_count[4] candidates;
+    candidate_vote_count[14] candidates;
 
     function create_candidates() public {
-       for (uint8 i = 0; i < 4; i++) {
+       for (uint8 i = 0; i < 14; i++) {
            candidates[i].candidate_id = i+1;
            candidates[i].vote_count = 0;
        }

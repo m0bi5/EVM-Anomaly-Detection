@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <style>
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #1abc9c;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 10% auto;
+  box-shadow: inset 0px 0px 0px #7ac142;
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #1abc9c;
+  }
+}
+
+.alert-sign {
+    stroke-width:6.25;
+    stroke-linecap: round;
+    position: absolute;
+    top: 40px;
+    left: 68px;
+    width: 15px;
+    height: 70px;
+    animation: 0.5s alert-sign-bounce cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.alert-sign .dot {
+    stroke:none;
+    fill: #FFC107;
+}
+
+@keyframes alert-sign-bounce {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}   
+
+        </style>
+    </head>
+    <body style="background-color:#34495e"> 
+        {% if success %}
+            <svg style="margin-top:30px;" class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+        {% else %}
+            <svg style="margin-top:30px;" class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <path class="line" d="M634.087,300.805L673.361,261.53" fill="none"/>
+                <circle class="dot" cx="621.52" cy="316.126" r="1.318" />
+            </svg>
+        {% endif %}
+
+        <h2 style="margin-top:-120px;" class="center white-text">
+            {% if success %}
+                Vote Casted
+            {% else %}
+                Vote Mismatch
+            {% endif %}
+        </h2>
+        <div class="center">
+            {% if success %}
+                <span style="font-size:20px;" class="white-text">Transaction Hash : {{hash}}</span>
+            {% else %}
+                <span style="font-size:20px;" class="white-text">Your vote has been registered but we detected a mismatch, please report it to an offical<br>You've voted for {{votedFor}} but the EVM recorded it as {{voteRegisteredAs}}<br>Transaction Hash : {{hash}}</span>
+            {% endif %}
+        </div>
+    </body>
+</html>

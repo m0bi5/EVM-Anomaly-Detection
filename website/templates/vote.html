@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <style>
+
+        </style>
+    </head>
+    <body style="background-color:#34495e"> 
+       
+        <h2 style="margin-top:-0px;" class="center white-text">
+            Waiting for transaction
+        </h2>
+        <div class='center'>
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-green-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+    <script>
+        function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}
+        wait(7000)
+        window.location.href='http://localhost:8000/voted'
+    </script>
+</html>

@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ 
+    </head>
+    <body style="background-color:#34495e"> 
+
+        <h3 class="center white-text">
+                Cast Your Vote
+        </h3>
+    </body>
+    <script>
+    function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}
+        wait(2000)
+        window.location.href='http://localhost:8000/vote'
+    </script>
+</html>
